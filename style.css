@@ -52,6 +52,7 @@
     padding: 5px 10px;
     cursor: pointer;
     transition: transform 0.1s;
+    background-color: var(--top);
     /* will-change: trasnsform;
     backface-visibility: hidden; */
 }
@@ -59,18 +60,10 @@
 {
     transform: scale(1.1);
 }
-.focus
+.selected
 {
     color: black;
     background-color: var(--purple);
-}
-.break
-{
-    background-color: var(--top);
-}
-.long-break
-{
-    background-color: var(--top);
 }
 .flip-cont
 {
@@ -120,14 +113,14 @@
     
     background-color: var(--top);
     border-bottom: 1px solid var(--black);
-    background-color: red;
+    /* background-color: red; */
 }
 .bottom
 {
     line-height: 0;
     background-color: var(--bottom);
     border-top: 1px solid var(--black);
-    background-color: green;
+    /* background-color: green; */
 }
 .top-flip
 {
@@ -135,7 +128,7 @@
     position: absolute;
     top: 0;
     z-index: 10;
-    background-color: teal;
+    /* background-color: teal; */
     border-bottom: 1px solid var(--black);
     transform-style: preserve-3d;
     transform-origin: bottom;
@@ -149,7 +142,7 @@
     line-height: 0;
     position: absolute;
     top: 50%;
-    background-color: brown;
+    /* background-color: brown; */
     transform: rotateX(90deg);
     transform-origin: top;
     transform-style: preserve-3d;
@@ -203,9 +196,78 @@
 }
 .restart
 {
-    background-color: var(--red);    
+    background-color: var(--red);
 }
 .customize
 {
     background-color: var(--white);
+}
+.cancel,.congratulation
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) scale(0);
+    width: 20%;
+    height: 20%;
+    border-radius: 5px;
+    background-color: var(--black);
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    transition: 0.5s;
+}
+.layout
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* background-color: var(--purple); */
+    background-color: var(--black);
+    transform: scale(0);
+    transition: 0.5s;
+}
+.msg
+{
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+.yes,.no
+{
+    width: 50%;
+    font-size: 1.5rem;
+    text-align: center;
+    color: green;
+    cursor: pointer;
+}
+.no
+{
+    color: red;
+}
+.congratulation
+{
+    background: linear-gradient(to right,var(--purple),var(--blue));
+    width: 30%;
+    height: 40%;
+    color: black;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.msg1
+{
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+.scale1
+{
+    transform: scale(1);
+}
+.scale2
+{
+    transform: translate(-50%,-50%) scale(1);
 }

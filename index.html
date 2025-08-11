@@ -7,29 +7,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="clock-cont">
             <div class="upper-opt">
-                <div class="focus">focus</div>
+                <div class="focus selected">focus</div>
                 <div class="break">break</div>
                 <div class="long-break">long break</div>
             </div>
             <div class="flip-cont">
                 <div class="min">
                     <div class="min1">
-                        <div class="top">2</div>
-                        <div class="bottom">3</div>
-                        <div class="top-flip">3</div>
-                        <div class="bottom-flip">2</div>
-                    </div>
-                    <div class="min2">
-                        <div class="top">9</div>
+                        <div class="top">0</div>
                         <div class="bottom">0</div>
                         <div class="top-flip">0</div>
-                        <div class="bottom-flip">9</div>
+                        <div class="bottom-flip">0</div>
+                    </div>
+                    <div class="min2">
+                        <div class="top">0</div>
+                        <div class="bottom">0</div>
+                        <div class="top-flip">0</div>
+                        <div class="bottom-flip">0</div>
                     </div>
                 </div>
                 <div class="sec">
@@ -52,6 +53,18 @@
                 <div class="restart">restart</div>
                 <div class="customize">customize</div>
             </div>
+        </div>
+        <div class="layout"></div>
+        <div class="cancel">
+            <div class="msg">cancel timer</div>
+            <div class="yes"><i class="fa-solid fa-check"></i></div>
+            <div class="no"><i class="fa-solid fa-x"></i></div>
+        </div>
+        <div class="congratulation">
+            <div class="msg1">Timer finishes</div>
+            <div class="focus">Focus</div>
+            <div class="break">Break</div>
+            <div class="long-break">Long break</div>
         </div>
     </div>
     <script src="js.js"></script>
