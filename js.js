@@ -2,6 +2,10 @@ let select = 0;
 let handler;
 let timerRunning = 0;
 let popSelect = -1;
+let Focus = 25;
+let Break = 3;
+let longBreak = 15; 
+let cus = 0;
 const layout = document.querySelector(".layout");
 function remove_anim_wrapper(ele,time,top_flip,bottom_flip)
 {
@@ -11,7 +15,6 @@ function remove_anim_wrapper(ele,time,top_flip,bottom_flip)
         ele.children[2].innerHTML = time;
         top_flip.classList.remove("flip-top-anim");
         bottom_flip.classList.remove("flip-bottom-anim");
-        // console.log("finish");
         bottom_flip.removeEventListener("animationend",handler);
     }
 }
@@ -59,16 +62,18 @@ function restart()
         }
         else if(select == 1)
         {
-            clock.startTimer(2,0);
+            clock.startTimer(Break,0);
         }
         else
         {
-            clock.startTimer(3,0);
+            clock.startTimer(longBreak,0);
         }
     }
 }
 function pop(timer,subTime)
 {
+    let audio1 = new Audio("beep1.mp3");
+    audio1.play();
     clearInterval(timer);
     timerRunning = 0;
     popSelect = -1;
@@ -86,7 +91,6 @@ function pop(timer,subTime)
         target1 = document.querySelector(".congratulation").children[1];
         target2 = "Focus";
     }
-    // subTime = 5;
     let subTimeHolder = setInterval(() => 
     {
         subTime--;
@@ -97,6 +101,7 @@ function pop(timer,subTime)
             select = popSelect;
             layout.classList.remove("scale1");
             document.querySelector(".congratulation").classList.remove("scale2");
+            audio1.pause();
             restart();
             clearInterval(subTimeHolder);
         }
@@ -104,11 +109,11 @@ function pop(timer,subTime)
         {
             if(subTime == 0)
             {
+                audio1.pause();
                 clearInterval(subTimeHolder);
                 layout.classList.remove("scale1");
                 document.querySelector(".congratulation").classList.remove("scale2");
                 target1.innerHTML = target2;
-                // document.querySelector(".selected").classList.remove("selected");
                 if(target1 == document.querySelector(".congratulation").children[2])
                 {
                     select = 1;
@@ -117,22 +122,27 @@ function pop(timer,subTime)
                 {
                     select = 0;
                 }
-                // document.querySelector(".upper-opt").children[select].classList.add("selected");
                 restart();
             }
         }
     }, 1000);
-    // return;
+}
+function iniFullUb()
+{
+    iniUpdate("sec1",0);
+    iniUpdate("sec2",0);
+    iniUpdate("min1",0);
+    iniUpdate("min2",0);
 }
 const clock = (function ()
 {
-    // let subTime = 5;
     let timer;
     let csec;
     let cmin;
     function startTimer(min,sec)
     {
         timerRunning = 1;
+        document.querySelector(".war").innerHTML = "";
         let audio = new Audio("tick.mp3");
         let minupdate1 = Math.floor(min/10);
         let minupdate2 = min%10;
@@ -140,12 +150,13 @@ const clock = (function ()
         iniUpdate("min2",minupdate2);
         document.querySelector(".selected").classList.remove("selected");
         document.querySelector(".upper-opt").children[select].classList.add("selected");
-        // console.log(`sec ${sec}`);
         timer = setInterval(()=>
         {
-            // console.log("enter");
             sec--;
-            audio.play();
+            if(document.querySelector(".option").children[1].classList.contains("fa-volume-high"))
+            {
+                audio.play();
+            }
             if(sec == -1)
             {
                 min--;
@@ -185,10 +196,9 @@ const clock = (function ()
     function cleartimer()
     {
         pauseTimer();
-        iniUpdate("sec1",0);
-        iniUpdate("sec2",0);
-        iniUpdate("min1",0);
-        iniUpdate("min2",0);
+        setTimeout(() => {
+            iniFullUb();
+        }, 700);
         timerRunning = 0;
     }
     function resumeTimer()
@@ -213,17 +223,49 @@ function upperOpt(i)
         select = i;
     }
     document.querySelector(".upper-opt").children[select].classList.add("selected");
-    //console.log(prev);
 }
 let prev;
 for(let i = 0;i<3;i++)
 {
-    // document.querySelector(".upper-opt").children[i].classList.remove("selected");
     document.querySelector(".upper-opt").children[i].addEventListener("click",()=>
     {
-        // console.log(`on call ${prev.innerHTML}`);
         prev = i;
         upperOpt(i);
+    });
+    document.querySelector(".lower-opt").children[i].addEventListener("click",()=>
+    {
+        if(i == 0)
+        {
+            restart();
+        }
+        else if(i==1)
+        {
+            if(timerRunning == 0)
+            {
+                document.querySelector(".war").innerHTML = "*timer already reset";
+            }
+            else
+            {
+                document.querySelector(".war").innerHTML = "";
+                clock.cleartimer();
+            }
+        }
+        else
+        {
+            document.querySelector(".option").classList.add("scale2");
+            if(timerRunning == 1)
+            {
+                console.log("yes or no");
+                layout.classList.add("scale1");
+                document.querySelector(".cancel").classList.add("scale2");
+                clock.pauseTimer();
+                cus = 1;
+            }
+            else
+            {
+                document.querySelector(".war").innerHTML = "";
+            }
+        }
     });
 }
 for(let i=1;i<4;i++)
@@ -244,10 +286,6 @@ for(let i=1;i<4;i++)
         }
     });
 }
-document.querySelector(".start").addEventListener("click",()=>
-{
-    restart();
-});
 for(let i =0;i<2;i++)
 {
     document.querySelectorAll(".fa-solid")[i].addEventListener("click",()=>
@@ -257,12 +295,45 @@ for(let i =0;i<2;i++)
         if(i == 0)
         {
             clock.cleartimer();
-            upperOpt(prev);
+            if(cus == 0)
+            {
+                upperOpt(prev);
+            }
+            else
+            {
+                cus = 0;
+                upperOpt(select);
+            }
+            
         }
         else if(i == 1)
         {
             clock.resumeTimer();
+            document.querySelector(".option").classList.remove("scale2"); 
+        }
+    });
+    document.querySelector(".option").children[i].addEventListener("click",()=>
+    {
+        if(i==0)
+        {
+            document.querySelector(".option").classList.remove("scale2");
+            Focus = document.getElementById("focus-op").value;
+            Break = document.getElementById("break-op").value;
+            longBreak = document.getElementById("long-break-op").value;
+            console.log(Focus,Break,longBreak);
+        }
+        else if(i==1)
+        {
+            if(document.querySelector(".option").children[1].classList.contains("fa-volume-high"))
+            {
+                document.querySelector(".option").children[1].classList.replace("fa-volume-high","fa-volume-xmark");
+            }
+            else
+            {
+                document.querySelector(".option").children[1].classList.replace("fa-volume-xmark","fa-volume-high");
+            }
         }
     });
 }
+
 
