@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="clock-cont">
+            <div class="upper-opt">
+                <div class="focus selected">focus</div>
+                <div class="break">break</div>
+                <div class="long-break">long break</div>
+            </div>
+            <div class="flip-cont">
+                <div class="min">
+                    <div class="min1">
+                        <div class="top">0</div>
+                        <div class="bottom">0</div>
+                        <div class="top-flip">0</div>
+                        <div class="bottom-flip">0</div>
+                    </div>
+                    <div class="min2">
+                        <div class="top">0</div>
+                        <div class="bottom">0</div>
+                        <div class="top-flip">0</div>
+                        <div class="bottom-flip">0</div>
+                    </div>
+                </div>
+                <div class="sec">
+                    <div class="sec1">
+                        <div class="top">0</div>
+                        <div class="bottom">0</div>
+                        <div class="top-flip">0</div>
+                        <div class="bottom-flip">0</div>
+                    </div>
+                    <div class="sec2">
+                        <div class="top">0</div>
+                        <div class="bottom">0</div>
+                        <div class="top-flip">0</div>
+                        <div class="bottom-flip">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="lower-opt">
+                <div class="start">start</div>
+                <div class="restart">restart</div>
+                <div class="customize">customize</div>
+                <div class="war"></div>
+            </div>
+        </div>
+        <div class="layout"></div>
+        <div class="cancel">
+            <div class="msg">cancel timer</div>
+            <div class="yes"><i class="fa-solid fa-check"></i></div>
+            <div class="no"><i class="fa-solid fa-x"></i></div>
+        </div>
+        <div class="congratulation">
+            <div class="msg1">Timer finishes</div>
+            <div class="focus">Focus</div>
+            <div class="break">Break</div>
+            <div class="long-break">Long break</div>
+        </div>
+        <div class="option">
+            <i class="fa-solid fa-xmark"></i>
+            <i class="fa-solid fa-volume-high"></i>
+            <!-- <i class="fa-solid fa-volume-xmark"></i> -->
+            <label for="focus-op">focus</label>
+            <select  id="focus-op">
+                <option value="25">25 min</option>
+                <option value="30">30 min</option>
+                <option value="45">45 min</option>
+                <option value="50">50 min</option>
+            </select>
+            <label for="break-op">break</label>
+            <select  id="break-op">
+                <option value="3">3 min</option>
+                <option value="5">5 min</option>
+                <option value="7">7 min</option>
+                <option value="10">10 min</option>
+            </select>
+            <label for="long-break-op">long break</label>
+            <select  id="long-break-op">
+                <option value="15">15 min</option>
+                <option value="20">20 min</option>
+                <option value="25">25 min</option>
+                <option value="30">30 min</option>
+            </select>
+        </div>
+    </div>
+    <script src="js.js"></script>
+</body>
+</html>
