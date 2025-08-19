@@ -58,7 +58,7 @@ function restart()
         console.log(`select ${select}`);
         if(select == 0)
         {
-            clock.startTimer(1,0);
+            clock.startTimer(Focus,0);
         }
         else if(select == 1)
         {
@@ -164,7 +164,7 @@ const clock = (function ()
                 {
                     pop(timer,5);
                 }
-                sec = 5;
+                sec = 59;
                 [sec,min] = padSecMin(sec,min);
             }
             if(minupdate1 != min.slice(0,-1))
