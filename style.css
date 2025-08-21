@@ -31,6 +31,8 @@
     background-color: var(--black);
     width: 40%;
     height: 40%;
+    max-height: 240px;
+    min-height: 220px;
     padding: 1rem;
     border-radius: 10px;
     display: flex;
@@ -332,22 +334,26 @@
     transform: translate(-50%,-50%) scale(1);
 }
 @media (min-width:769px) and (max-width:1279px) {
-    /* .container
+    .container
     {
         background-color: red;
-    } */
+    }
     html
     {
         font-size: 13px;
-    } 
+    }
+    .clock-cont
+    {
+        width: 60%;
+    }/* 
     .flip-cont
     {
         width: 100%;
-    }
+    } */
 }
 @media (min-width:481px) and (max-width:768px)
 {
-    html
+    /* html
     {
         font-size: 13px;
     }
@@ -366,7 +372,7 @@
     .clock-cont,.congratulation,.cancel,.option
     {
         width: 80%;
-    }
+    } */
 }
 @media (max-width:481px) {
     .container
