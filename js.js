@@ -11,8 +11,8 @@ function remove_anim_wrapper(ele,time,top_flip,bottom_flip)
 {
     return function remove_anim()
     {
-        ele.children[1].innerHTML = time;
-        ele.children[2].innerHTML = time;
+        ele.children[1].innerHTML = `<span class = "bottom-span">${time}</span>`;
+        ele.children[2].innerHTML = `<span class = "top-span">${time}</span>`;
         top_flip.classList.remove("flip-top-anim");
         bottom_flip.classList.remove("flip-bottom-anim");
         bottom_flip.removeEventListener("animationend",handler);
@@ -20,8 +20,8 @@ function remove_anim_wrapper(ele,time,top_flip,bottom_flip)
 }
 function update(ele,time,i)
 {
-    ele.children[0].innerHTML = time;
-    ele.children[3].innerHTML = time;
+    ele.children[0].innerHTML = `<span class = "top-span">${time}</span>`;
+    ele.children[3].innerHTML = `<span class = "bottom-span">${time}</span>`;
     let top_flip = document.querySelectorAll(".top-flip")[i];
     let bottom_flip = document.querySelectorAll(".bottom-flip")[i];
     top_flip.classList.add("flip-top-anim");
@@ -40,8 +40,8 @@ function padSecMin(sec,min)
 }
 function iniUpdate(timeEle,val)
 {
-    document.querySelector(`.${timeEle} .bottom`).innerHTML = val;
-    document.querySelector(`.${timeEle} .top-flip`).innerHTML = val;
+    document.querySelector(`.${timeEle} .bottom`).innerHTML = `<span class ="bottom-span">${val}</span>`;
+    document.querySelector(`.${timeEle} .top-flip`).innerHTML = `<span class ="top-span">${val}</span>`;
 }
 function resetCongra()
 {
